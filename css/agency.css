@@ -3,7 +3,16 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
-.grid-item { width: 30.0%; }
+.grid-item {
+      width: 50%;
+      border: 33px solid hsla(0, 0%, 0%, 0.-3);
+}
+
+.grid-item img {
+      display: flex;
+      max-width: 100%;
+}
+
 
 body {
     overflow-x: hidden;
@@ -176,7 +185,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,cursive;
+    text-transform: uppercase;
     color: white;
 }
 
@@ -267,12 +277,10 @@ header {
     color: #fff;
     background-attachment: fixed;
     background-image: url(../img/2014Aug09_0203.jpg);
-    background-position: center center;
+    background-position: center;
     background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;
+    padding-top: 300px;
 }
 
 header .intro-text {
@@ -289,12 +297,11 @@ header .intro-text .intro-lead-in {
 }
 
 header .intro-text .intro-heading {
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 50px;
+      text-transform: uppercase;
+      font-family: "Montserrat",Helvetica,Arial,sans-serif;
+      font-size: 50px;
+      font-weight: 100;
+      font-family: Arial,sans-serif;
 }
 
 @media(min-width:768px) {
@@ -304,7 +311,6 @@ header .intro-text .intro-heading {
     }
 
     header .intro-text .intro-lead-in {
-        margin-bottom: 25px;
         font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 40px;
         font-style: italic;
@@ -312,12 +318,10 @@ header .intro-text .intro-heading {
     }
 
     header .intro-text .intro-heading {
-        margin-bottom: 50px;
         text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 75px;
-        font-weight: 700;
-        line-height: 75px;
+        font-family: "Montserrat",Helvetica,Arial,sans-serif;
+        font-size: 50px;
+        font-weight: 100;
     }
 }
 
@@ -327,12 +331,12 @@ section {
 
 section h2.section-heading {
     margin-top: 0;
-    margin-bottom: 15px;
+    /*margin-bottom: 15 px;*/
     font-size: 40px;
 }
 
 section h3.section-subheading {
-    margin-bottom: 75px;
+    /*margin-bottom: 75px;*/
     text-transform: none;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
@@ -342,7 +346,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 150px 0;
+        /*padding: 150px 0;*/
     }
 }
 

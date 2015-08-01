@@ -11,7 +11,6 @@
 
     <title>Vision Field Photography</title>
 
-    <script src="masonry.pkgd.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -77,18 +76,19 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading">Vision Field Photography</div>
-                <div class="intro-lead-in">Michael Remington</div>
-                <a href="#portfolio" class="page-scroll btn btn-xl">Portfolio</a>
+                <!-- <div class="intro-heading">Vision Field Photography</div> -->
+                <!-- <div class="intro-lead-in">Michael Remington</div> -->
+                <!-- <a href="#portfolio" class="page-scroll btn btn-xl">Portfolio</a> -->
             </div>
         </div>
     </header>
 
-    <!-- <div class="grid"> -->
+    <section id="portfolio" >
     <div class="grid js-masonry"
-      data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200 }'>
+      data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200, "percentPosition": true}'>
       <div class="grid-item"><img src="img/header-bg.jpg"/></div>
-      <div class="grid-item">...</div>
+      <div class="grid-item"><img src="img/header-bg2.jpg"/></div>
+      <div class="grid-item"><img src="img/header-bga.jpg"/></div>
     </div>
 
     <!-- Services Section -->
@@ -434,25 +434,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                    <span class="copyright">Copyright &copy; Michael Remington 2015</span>
                 </div>
                 <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
+                    <!-- <ul class="list-inline social-buttons">
                         <li><a href="#"><i class="fa fa-twitter"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-linkedin"></i></a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
@@ -645,6 +637,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/agency.js"></script>
+
+    <script src="masonry.pkgd.min.js"></script>
 
 </body>
 
