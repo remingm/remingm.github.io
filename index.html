@@ -11,7 +11,7 @@
 
     <title>Vision Field Photography</title>
 
-    <script src="/path/to/masonry.pkgd.min.js"></script>
+    <script src="masonry.pkgd.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -64,9 +64,6 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#team">Team</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -86,6 +83,13 @@
             </div>
         </div>
     </header>
+
+    <!-- <div class="grid"> -->
+    <div class="grid js-masonry"
+      data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200 }'>
+      <div class="grid-item"><img src="img/header-bg.jpg"/></div>
+      <div class="grid-item">...</div>
+    </div>
 
     <!-- Services Section -->
     <!-- <section id="services">
