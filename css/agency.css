@@ -5,7 +5,7 @@
  */
 .grid-item {
       width: 50%;
-      border: 33px solid hsla(0, 0%, 0%, 0.-3);
+      border: 33px solid #353535;
 }
 
 .grid-item img {
@@ -13,10 +13,10 @@
       max-width: 100%;
 }
 
-
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #353535;
 }
 
 .text-muted {
@@ -45,7 +45,7 @@ a.active {
 }
 
 a {
-    color: #fed136;
+    color: white;
 }
 
 a:hover,
@@ -64,6 +64,7 @@ h6 {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+    color: white;
 }
 
 .img-centered {
@@ -282,14 +283,24 @@ header {
     background-size: cover;
     padding-top: 300px;
 }
+.header2 {
+    text-align: center;
+    color: #fff;
+    background-attachment: fixed;
+    background-image: url(../img/header-bg2.jpg);
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    padding-top: 300px;
+}
 
 header .intro-text {
-    padding-top: 100px;
+    padding-top: 300px;
     padding-bottom: 50px;
 }
 
 header .intro-text .intro-lead-in {
-    margin-bottom: 25px;
+    /*margin-bottom: 2px;*/
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 22px;
     font-style: italic;
@@ -331,12 +342,12 @@ section {
 
 section h2.section-heading {
     margin-top: 0;
-    /*margin-bottom: 15 px;*/
+    margin-bottom: 15 px;
     font-size: 40px;
 }
 
 section h3.section-subheading {
-    /*margin-bottom: 75px;*/
+    margin-bottom: 75px;
     text-transform: none;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 16px;
@@ -346,12 +357,12 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        /*padding: 150px 0;*/
+        padding: 100px 0;
     }
 }
 
 .service-heading {
-    margin: 15px 0;
+    margin: 5px 0;
     text-transform: none;
 }
 
@@ -731,6 +742,7 @@ footer span.copyright {
     text-transform: none;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 40px;
+    color: white;
 }
 
 footer ul.quicklinks {
