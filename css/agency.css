@@ -5,7 +5,8 @@
  */
 .grid-item {
       width: 50%;
-      border: 33px solid #353535;
+      /*border: 33px solid #353535;*/
+      /*border: 33px solid white;*/
 }
 
 .grid-item img {
@@ -16,7 +17,8 @@
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #353535;
+    /*background-color: #353535;*/
+    background-color: white;
 }
 
 .text-muted {
@@ -62,9 +64,9 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-      /*font-family:"Cutive Mono","Courier", Helvetica,Arial,sans-serif;*/
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+      font-family:"Roboto Mono", Helvetica, Arial, sans-serif;
+    /*font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-weight: 300;
     color: white;
 }
 
@@ -187,9 +189,11 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,cursive;
+    /*font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,cursive;*/
+    font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,cursive;
     text-transform: uppercase;
     color: white;
+    font-weight: 300;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -219,9 +223,10 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .nav li a {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:"Roboto Mono","Helvetica Neue",Helvetica,Arial,cursive;
+    /*font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     color: #fff;
 }
 
@@ -234,13 +239,13 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #fed136;
+    /*background-color: #fed136;*/
+    background-color: #3B5163;
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     color: #fff;
-    background-color: #fec503;
 }
 
 @media(min-width:768px) {
@@ -265,8 +270,8 @@ fieldset[disabled] .btn-xl.active {
     }
 
     .navbar-default.navbar-shrink {
-        padding: 10px 0;
-        background-color: #222;
+        padding: 1px 0;
+        background-color: black;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -282,7 +287,7 @@ header {
     background-position: center;
     background-repeat: none;
     background-size: cover;
-    padding-top: 300px;
+    /*padding-top: 300px;*/
 }
 .header2 {
     text-align: center;
@@ -296,36 +301,41 @@ header {
 }
 
 header .intro-text {
-    padding-top: 300px;
-    padding-bottom: 50px;
+        padding-top: 300px;
+        padding-bottom: 500px;
 }
 
 header .intro-text .intro-lead-in {
     /*margin-bottom: 2px;*/
-    font-family:"Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+      /*font-family:"Roboto Mono", Helvetica, Arial, sans-serif;*/
+      font-family:"Cutive Mono","Courier", Helvetica,Arial,sans-serif;
+    /*font-family:"Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;*/
     font-size: 22px;
     font-style: italic;
     line-height: 22px;
+    letter-spacing: 2px;
 }
 
 header .intro-text .intro-heading {
       text-transform: uppercase;
-      font-family:"Cutive Mono","Courier", Helvetica,Arial,sans-serif;
-      /*font-family: "Cutive Mono", "Montserrat",Helvetica,Arial,sans-serif;*/
+      /*font-family:"Cutive Mono","Courier", Helvetica,Arial,sans-serif;*/
+      font-family:"Roboto Mono", Helvetica, Arial, sans-serif;
+      /*font-family: "Montserrat",Helvetica,Arial,sans-serif;*/
       font-size: 50px;
-      font-weight: 100;
-      /*background-color: black;*/
-      /*opacity: .5;*/
-}
+      font-weight: 300;
+    letter-spacing: 9px;
+/*      background-color: black;
+      opacity: .5;
+*/}
 
 @media(min-width:768px) {
     header .intro-text {
         padding-top: 300px;
-        padding-bottom: 200px;
+        padding-bottom: 500px;
     }
 
     header .intro-text .intro-lead-in {
-        font-size: 40px;
+        /*font-size: 40px;*/
         font-style: italic;
         line-height: 40px;
     }
@@ -334,12 +344,12 @@ header .intro-text .intro-heading {
       text-transform: uppercase;
       /*font-family: "montserrat",helvetica,arial,sans-serif;*/
       font-size: 50px;
-      font-weight: 100;
+      /*font-weight: 100;*/
   }
 }
 
 section {
-    padding: 100px 0;
+    padding: 1px 0;
 }
 
 section h2.section-heading {
@@ -359,7 +369,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 100px 0;
+        padding: 1px 0;
     }
 }
 
@@ -742,7 +752,10 @@ footer {
 footer span.copyright {
     text-transform: uppercase;
     text-transform: none;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family:"Roboto Mono", Helvetica, Arial, sans-serif;
+    /*font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-weight: 300;
+    /*font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
     line-height: 40px;
     color: white;
 }
@@ -865,12 +878,12 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #fed136;
+    background: black;
 }
 
 ::selection {
     text-shadow: none;
-    background: #fed136;
+    background: black;
 }
 
 img::selection {
