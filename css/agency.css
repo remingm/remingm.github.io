@@ -6,7 +6,7 @@
 .grid-item {
       width: 50%;
       /*border: 33px solid #353535;*/
-      /*border: 33px solid white;*/
+      border: 20px solid white;
 }
 
 .grid-item img {
