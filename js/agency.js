@@ -41,11 +41,21 @@ docReady( function() {
     percentPosition: true
   });
 
-  imagesLoaded( grid, function() {
-    // layout Masonry after each image loads
-    msnry.layout();
-  });
+  // imagesLoaded( grid, function() {
+  //   // layout Masonry after each image loads
+  //   msnry.layout();
+  // });
 
 
 
 });
+
+// init Masonry
+var $grid = $('.grid').masonry({
+  // options...
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+
