@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Play-By-Play Sports Modeling with Deep and Recurrent Neural Networks"
-date:   2016-06-24 17:01:49 -0700
+date:   2016-06-26 17:01:49 -0700
 categories: machine learning TensorFlow neural networks MLB baseball
 ---
 

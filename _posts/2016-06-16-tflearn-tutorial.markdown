@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "TensorFlow Learn Tutorial - Google's Simple Machine Learning Framework"
-date:   2016-06-15 17:58:49 -0700
+date:   2016-06-24 19:58:49 -0700
 categories: machine learning TensorFlow neural networks
 ---
 

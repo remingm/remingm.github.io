@@ -6,9 +6,39 @@
 </description>
     <link>http://remingm.github.io/</link>
     <atom:link href="http://remingm.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 27 Jun 2016 15:05:18 -0700</pubDate>
-    <lastBuildDate>Mon, 27 Jun 2016 15:05:18 -0700</lastBuildDate>
+    <pubDate>Mon, 27 Jun 2016 15:16:01 -0700</pubDate>
+    <lastBuildDate>Mon, 27 Jun 2016 15:16:01 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Play-By-Play Sports Modeling with Deep and Recurrent Neural Networks</title>
+        <description>&lt;p&gt;This poster displays some of the work I’ve done as part of the Hutchinson Machine Learning Lab at Western Washington University.
+I worked in close collaboration with a team of machine learning researchers to build an effective system for data organization, processing, modeling, and prediction. Our poster won “Outstanding Poster of the Undergraduate Scholars Showcase Poster Competition”. The project is still ongoing and we plan to submit a paper for publication.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/pdfs/poster.pdf&quot;&gt;Click here for the pdf.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/poster.png&quot; alt=&quot;poster&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 26 Jun 2016 17:01:49 -0700</pubDate>
+        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/26/nn-sports.html</link>
+        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/26/nn-sports.html</guid>
+        
+        
+        <category>machine</category>
+        
+        <category>learning</category>
+        
+        <category>TensorFlow</category>
+        
+        <category>neural</category>
+        
+        <category>networks</category>
+        
+        <category>MLB</category>
+        
+        <category>baseball</category>
+        
+      </item>
     
       <item>
         <title>Designing a Data Structure For Constant Time Lookup of Travel Times</title>
@@ -22,161 +52,6 @@
         <link>http://remingm.github.io/algorithms/2016/06/24/highway-problem.html</link>
         <guid isPermaLink="true">http://remingm.github.io/algorithms/2016/06/24/highway-problem.html</guid>
         
-        
-        <category>algorithms</category>
-        
-      </item>
-    
-      <item>
-        <title>Efficient Red-Black Tree Augmentation</title>
-        <description>&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
-&lt;p&gt;Consider storing a dynamic set &lt;em&gt;S&lt;/em&gt; of numbers in a red-black tree. The typical operations supported by a red-black tree are Insert, Search and Delete but we will add another operation, namely, MinDiff, which gives the absolute value of the difference between the two closest numbers in &lt;em&gt;S&lt;/em&gt;. For example if &lt;em&gt;S = {4,18,23,34,49,60,73,84,99}&lt;/em&gt; then the MinDiff function would return 5 since &lt;em&gt;|23 - 18| = 5&lt;/em&gt; and the absolute value of the difference between any other two numbers in the set is no smaller.
-Show how to augment a red-black tree to support this operation efficiently while maintaining the &lt;em&gt;O(lg n)&lt;/em&gt; running time for Insert, Search and Delete. Also, show how to output the values of two numbers that created the MinDiff. For the example above you would output 23 and 18.&lt;/p&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-&lt;p&gt;Each node in the red-black tree will be augmented with four fields:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The minimum of either &lt;code class=&quot;highlighter-rouge&quot;&gt;node.value - node.left.max&lt;/code&gt; (maximum value in left sub-tree) or &lt;code class=&quot;highlighter-rouge&quot;&gt;node.value - node.right.min&lt;/code&gt; (minimum value in right sub-tree). This is the minimum difference of the current node with any node in its sub-tree.&lt;/li&gt;
-  &lt;li&gt;Maximum value in sub-tree (&lt;code class=&quot;highlighter-rouge&quot;&gt;node.right.max&lt;/code&gt;). If no right child, put the value of the current node.&lt;/li&gt;
-  &lt;li&gt;Minimum value in sub-tree (&lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.min&lt;/code&gt;). If no left child, put the value of the current node.&lt;/li&gt;
-  &lt;li&gt;Minimum difference in sub-tree. This differs from the first field in that this is the minimum difference between any two nodes in the sub-tree, not just the current node. This is the minimum of the following three fields: &lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.field4, node.right.field4, node.field1&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;O(lg n)&lt;/em&gt; running time for Insert, Search and Delete is maintained because theorem 14.1 (1) from &lt;em&gt;Introduction to Algorithms&lt;/em&gt; by Cormen, is valid for a red-black tree augmented with the above fields. This is because all of the augmented fields of a node can be determined from examining only the augmented fields of the immediate left child and/or right child. It is only necessary to look at the largest value in the left sub-tree and the smallest value in the right sub-tree when determining minimum difference with the parent node, as these values will be the closest in value to the parent node. After any insert, search, or delete operations, the root node will be augmented with the minimum di↵erence in the tree in field 4.&lt;/p&gt;
-
-&lt;p&gt;Finding the values of the two numbers that created the MinDiff can be done in &lt;em&gt;O(lgn)&lt;/em&gt; time: Starting at the root, if &lt;code class=&quot;highlighter-rouge&quot;&gt;node.field4 = node.left.field4&lt;/code&gt;, go left, otherwise go right. Repeat until &lt;code class=&quot;highlighter-rouge&quot;&gt;node.field1 = root.field4&lt;/code&gt;. At this point, the current node is one of the values of the minimum difference, and the other is either &lt;code class=&quot;highlighter-rouge&quot;&gt;node.right.field2&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.field3&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;1.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Theorem 14.1 (Augmenting a red-black tree)
-Let f be an attribute that augments a red-black tree T of n nodes, and suppose that the value of f for each node x depends on only the information in nodes x, x:left, and x:right, possibly including x:left:f and x:right:f. Then, we can maintain the values of f in all nodes of T during insertion and deletion without asymptotically affecting the O.lg n/ performance of these operations.&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 18:01:49 -0700</pubDate>
-        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/red-black-trees.html</link>
-        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/red-black-trees.html</guid>
-        
-        
-        <category>machine</category>
-        
-        <category>learning</category>
-        
-        <category>TensorFlow</category>
-        
-        <category>neural</category>
-        
-        <category>networks</category>
-        
-        <category>MLB</category>
-        
-        <category>baseball</category>
-        
-      </item>
-    
-      <item>
-        <title>Play-By-Play Sports Modeling with Deep and Recurrent Neural Networks</title>
-        <description>&lt;p&gt;This poster displays some of the work I’ve done as part of the Hutchinson Machine Learning Lab at Western Washington University.
-I worked in close collaboration with a team of machine learning researchers to build an effective system for data organization, processing, modeling, and prediction. Our poster won “Outstanding Poster of the Undergraduate Scholars Showcase Poster Competition”. The project is still ongoing and we plan to submit a paper for publication.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/pdfs/poster.pdf&quot;&gt;Click here for the pdf.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/poster.png&quot; alt=&quot;poster&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 17:01:49 -0700</pubDate>
-        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/nn-sports.html</link>
-        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/nn-sports.html</guid>
-        
-        
-        <category>machine</category>
-        
-        <category>learning</category>
-        
-        <category>TensorFlow</category>
-        
-        <category>neural</category>
-        
-        <category>networks</category>
-        
-        <category>MLB</category>
-        
-        <category>baseball</category>
-        
-      </item>
-    
-      <item>
-        <title>A Dynamic Programming Solution To The Optimal Change Problem</title>
-        <description>&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
-&lt;p&gt;In some circumstances – indeed, the majority of randomly chosen ones – devising optimal change for a given amount A and a set of denominations &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;d1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;d2,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...dn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; will not yield to a greedy algorithm, but requires dynamic programming. Give carefully worded pseudo-code for an algorithm that takes as input an amount and a set of denominations (such as coins or stamps) and generates on optimal collection of change (optimal in the sense that it has the fewest total number of elements (coins or stamps).&lt;/p&gt;
-
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
-&lt;p&gt;Supposing the denominations are 1,6,10 and the amount is 24, my algorithm generates a 25 x 3 matrix (24 + the zero column) that stores the optimal coin counts for each amount from 0 to 24. Each column denoted by index &lt;code class=&quot;highlighter-rouge&quot;&gt;amt&lt;/code&gt; (amount) is computed by looking at the &lt;code class=&quot;highlighter-rouge&quot;&gt;amt-coin&lt;/code&gt; columns for each coin in denominations. So in the case of 24, the algorithm looks at columns (24-1), (24-6), and (24-10). For each of these three columns, the algorithm finds how many coins of the respective denomination need to be added to equal 24. The denomination with the lowest number of coins is chosen and the coin amounts are written to the matrix. My algorithm follows the dynamic programming methodology because it breaks the problem into overlapping sub-problems.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Counts is a matrix that stores the counts of each coin for each value in the range (0, amount)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Counts = [amount][number of denominations]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# Set the minimum coin count to infinity for this amount&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;inf&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# For each coin, look at the optimal coin counts for amt-coin.&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;# Then check if using that coin to make up the difference from amt to (amt - coin) leads to using the fewest coins.&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-                    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-                &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;The optimal change for &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;is &quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; of coin &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total coins = &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The output of this algorithm with amount = 24 and denominations = [1,6,10] is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[[0, 0, 0], [1, 0, 0], [2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 0, 0],
-[0, 1, 0], [1, 1, 0], [2, 1, 0], [3, 1, 0], [0, 0, 1], [1, 0, 1],
-[0, 2, 0], [1, 2, 0], [2, 2, 0], [3, 2, 0], [0, 1, 1], [1, 1, 1],
-[0, 3, 0], [1, 3, 0], [0, 0, 2], [1, 0, 2], [0, 2, 1], [1, 2, 1],
-[0, 4, 0]]
-
-The optimal change for 24 is
-0  of coin  1
-4  of coin  6
-0  of coin  10
-Total coins =  4
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Here’s a sketch I did when devising this solution. Amount = 12 and denominations = [1,6,10]:
-&lt;img src=&quot;/img/1.jpg&quot; alt=&quot;whiteboard&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 24 Jun 2016 13:58:49 -0700</pubDate>
-        <link>http://remingm.github.io/dynamic/programming/algorithms/2016/06/24/a-dynamic-programming-solution-to-the-optimal-change-problem.html</link>
-        <guid isPermaLink="true">http://remingm.github.io/dynamic/programming/algorithms/2016/06/24/a-dynamic-programming-solution-to-the-optimal-change-problem.html</guid>
-        
-        
-        <category>dynamic</category>
-        
-        <category>programming</category>
         
         <category>algorithms</category>
         
@@ -663,9 +538,9 @@ It’s recommended in ‘Bengio. Practical Recommendations for Gradient-Based Tr
 
 &lt;p&gt;Tuning is important. If you check model_log.csv you’ll see that the same model can do poorly or excellently with different hyperparameters.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 15 Jun 2016 17:58:49 -0700</pubDate>
-        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/2016/06/15/tflearn-tutorial.html</link>
-        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/2016/06/15/tflearn-tutorial.html</guid>
+        <pubDate>Fri, 24 Jun 2016 19:58:49 -0700</pubDate>
+        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/2016/06/24/tflearn-tutorial.html</link>
+        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/2016/06/24/tflearn-tutorial.html</guid>
         
         
         <category>machine</category>
@@ -677,6 +552,131 @@ It’s recommended in ‘Bengio. Practical Recommendations for Gradient-Based Tr
         <category>neural</category>
         
         <category>networks</category>
+        
+      </item>
+    
+      <item>
+        <title>Efficient Red-Black Tree Augmentation</title>
+        <description>&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Consider storing a dynamic set &lt;em&gt;S&lt;/em&gt; of numbers in a red-black tree. The typical operations supported by a red-black tree are Insert, Search and Delete but we will add another operation, namely, MinDiff, which gives the absolute value of the difference between the two closest numbers in &lt;em&gt;S&lt;/em&gt;. For example if &lt;em&gt;S = {4,18,23,34,49,60,73,84,99}&lt;/em&gt; then the MinDiff function would return 5 since &lt;em&gt;|23 - 18| = 5&lt;/em&gt; and the absolute value of the difference between any other two numbers in the set is no smaller.
+Show how to augment a red-black tree to support this operation efficiently while maintaining the &lt;em&gt;O(lg n)&lt;/em&gt; running time for Insert, Search and Delete. Also, show how to output the values of two numbers that created the MinDiff. For the example above you would output 23 and 18.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Each node in the red-black tree will be augmented with four fields:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The minimum of either &lt;code class=&quot;highlighter-rouge&quot;&gt;node.value - node.left.max&lt;/code&gt; (maximum value in left sub-tree) or &lt;code class=&quot;highlighter-rouge&quot;&gt;node.value - node.right.min&lt;/code&gt; (minimum value in right sub-tree). This is the minimum difference of the current node with any node in its sub-tree.&lt;/li&gt;
+  &lt;li&gt;Maximum value in sub-tree (&lt;code class=&quot;highlighter-rouge&quot;&gt;node.right.max&lt;/code&gt;). If no right child, put the value of the current node.&lt;/li&gt;
+  &lt;li&gt;Minimum value in sub-tree (&lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.min&lt;/code&gt;). If no left child, put the value of the current node.&lt;/li&gt;
+  &lt;li&gt;Minimum difference in sub-tree. This differs from the first field in that this is the minimum difference between any two nodes in the sub-tree, not just the current node. This is the minimum of the following three fields: &lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.field4, node.right.field4, node.field1&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;O(lg n)&lt;/em&gt; running time for Insert, Search and Delete is maintained because theorem 14.1 (1) from &lt;em&gt;Introduction to Algorithms&lt;/em&gt; by Cormen, is valid for a red-black tree augmented with the above fields. This is because all of the augmented fields of a node can be determined from examining only the augmented fields of the immediate left child and/or right child. It is only necessary to look at the largest value in the left sub-tree and the smallest value in the right sub-tree when determining minimum difference with the parent node, as these values will be the closest in value to the parent node. After any insert, search, or delete operations, the root node will be augmented with the minimum di↵erence in the tree in field 4.&lt;/p&gt;
+
+&lt;p&gt;Finding the values of the two numbers that created the MinDiff can be done in &lt;em&gt;O(lgn)&lt;/em&gt; time: Starting at the root, if &lt;code class=&quot;highlighter-rouge&quot;&gt;node.field4 = node.left.field4&lt;/code&gt;, go left, otherwise go right. Repeat until &lt;code class=&quot;highlighter-rouge&quot;&gt;node.field1 = root.field4&lt;/code&gt;. At this point, the current node is one of the values of the minimum difference, and the other is either &lt;code class=&quot;highlighter-rouge&quot;&gt;node.right.field2&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;node.left.field3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Theorem 14.1 (Augmenting a red-black tree)
+Let f be an attribute that augments a red-black tree T of n nodes, and suppose that the value of f for each node x depends on only the information in nodes x, x:left, and x:right, possibly including x:left:f and x:right:f. Then, we can maintain the values of f in all nodes of T during insertion and deletion without asymptotically affecting the O.lg n/ performance of these operations.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Fri, 24 Jun 2016 18:01:49 -0700</pubDate>
+        <link>http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/red-black-trees.html</link>
+        <guid isPermaLink="true">http://remingm.github.io/machine/learning/tensorflow/neural/networks/mlb/baseball/2016/06/24/red-black-trees.html</guid>
+        
+        
+        <category>machine</category>
+        
+        <category>learning</category>
+        
+        <category>TensorFlow</category>
+        
+        <category>neural</category>
+        
+        <category>networks</category>
+        
+        <category>MLB</category>
+        
+        <category>baseball</category>
+        
+      </item>
+    
+      <item>
+        <title>A Dynamic Programming Solution To The Optimal Change Problem</title>
+        <description>&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;In some circumstances – indeed, the majority of randomly chosen ones – devising optimal change for a given amount A and a set of denominations &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;d1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;d2,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...dn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; will not yield to a greedy algorithm, but requires dynamic programming. Give carefully worded pseudo-code for an algorithm that takes as input an amount and a set of denominations (such as coins or stamps) and generates on optimal collection of change (optimal in the sense that it has the fewest total number of elements (coins or stamps).&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Supposing the denominations are 1,6,10 and the amount is 24, my algorithm generates a 25 x 3 matrix (24 + the zero column) that stores the optimal coin counts for each amount from 0 to 24. Each column denoted by index &lt;code class=&quot;highlighter-rouge&quot;&gt;amt&lt;/code&gt; (amount) is computed by looking at the &lt;code class=&quot;highlighter-rouge&quot;&gt;amt-coin&lt;/code&gt; columns for each coin in denominations. So in the case of 24, the algorithm looks at columns (24-1), (24-6), and (24-10). For each of these three columns, the algorithm finds how many coins of the respective denomination need to be added to equal 24. The denomination with the lowest number of coins is chosen and the coin amounts are written to the matrix. My algorithm follows the dynamic programming methodology because it breaks the problem into overlapping sub-problems.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Counts is a matrix that stores the counts of each coin for each value in the range (0, amount)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Counts = [amount][number of denominations]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Set the minimum coin count to infinity for this amount&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;inf&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# For each coin, look at the optimal coin counts for amt-coin.&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Then check if using that coin to make up the difference from amt to (amt - coin) leads to using the fewest coins.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+                &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optimal_coin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;The optimal change for &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;is &quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; of coin &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;denominations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total coins = &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min_sum&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The output of this algorithm with amount = 24 and denominations = [1,6,10] is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[[0, 0, 0], [1, 0, 0], [2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 0, 0],
+[0, 1, 0], [1, 1, 0], [2, 1, 0], [3, 1, 0], [0, 0, 1], [1, 0, 1],
+[0, 2, 0], [1, 2, 0], [2, 2, 0], [3, 2, 0], [0, 1, 1], [1, 1, 1],
+[0, 3, 0], [1, 3, 0], [0, 0, 2], [1, 0, 2], [0, 2, 1], [1, 2, 1],
+[0, 4, 0]]
+
+The optimal change for 24 is
+0  of coin  1
+4  of coin  6
+0  of coin  10
+Total coins =  4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here’s a sketch I did when devising this solution. Amount = 12 and denominations = [1,6,10]:
+&lt;img src=&quot;/img/1.jpg&quot; alt=&quot;whiteboard&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 24 Jun 2016 13:58:49 -0700</pubDate>
+        <link>http://remingm.github.io/dynamic/programming/algorithms/2016/06/24/a-dynamic-programming-solution-to-the-optimal-change-problem.html</link>
+        <guid isPermaLink="true">http://remingm.github.io/dynamic/programming/algorithms/2016/06/24/a-dynamic-programming-solution-to-the-optimal-change-problem.html</guid>
+        
+        
+        <category>dynamic</category>
+        
+        <category>programming</category>
+        
+        <category>algorithms</category>
         
       </item>
     
