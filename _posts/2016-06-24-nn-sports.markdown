@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Play-By-Play Sports Modeling with Deep and Recurrent Neural Networks"
+date:   2016-06-24 17:01:49 -0700
+categories: machine learning TensorFlow neural networks MLB baseball
+---
+
+This poster displays some of the work I've done as part of the Hutchinson Machine Learning Lab at Western Washington University.
+I worked in close collaboration with a team of machine learning researchers to build an effective system for data organization, processing, modeling, and prediction. Our poster won "Outstanding Poster of the Undergraduate Scholars Showcase Poster Competition". The project is still ongoing and we plan to submit a paper for publication.
+
+[Click here for the pdf.](/pdfs/poster.pdf)
+
+![poster](/img/poster.png)

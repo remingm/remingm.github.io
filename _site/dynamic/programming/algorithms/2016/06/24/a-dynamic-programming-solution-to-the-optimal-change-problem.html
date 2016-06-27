@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Dynamic Programming Solution To The Optimal Change Problem</title>
+  <meta name="description" content="ProblemIn some circumstances – indeed, the majority of randomly chosen ones – devising optimal change for a given amount A and a set of denominations {d1, d2...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/dynamic/programming/algorithms/2016/06/24/a-dynamic-programming-solution-to-the-optimal-change-problem.html">
+  <link rel="alternate" type="application/rss+xml" title="Michael Remington" href="http://yourdomain.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Michael Remington</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">Hire me!</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A Dynamic Programming Solution To The Optimal Change Problem</h1>
+    <p class="post-meta"><time datetime="2016-06-24T13:58:49-07:00" itemprop="datePublished">Jun 24, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="problem">Problem</h2>
+<p>In some circumstances – indeed, the majority of randomly chosen ones – devising optimal change for a given amount A and a set of denominations <code class="highlighter-rouge"><span class="p">{</span><span class="err">d1,</span><span class="w"> </span><span class="err">d2,</span><span class="w"> </span><span class="err">...dn</span><span class="p">}</span></code> will not yield to a greedy algorithm, but requires dynamic programming. Give carefully worded pseudo-code for an algorithm that takes as input an amount and a set of denominations (such as coins or stamps) and generates on optimal collection of change (optimal in the sense that it has the fewest total number of elements (coins or stamps).</p>
+
+<h2 id="solution">Solution</h2>
+<p>Supposing the denominations are 1,6,10 and the amount is 24, my algorithm generates a 25 x 3 matrix (24 + the zero column) that stores the optimal coin counts for each amount from 0 to 24. Each column denoted by index <code class="highlighter-rouge">amt</code> (amount) is computed by looking at the <code class="highlighter-rouge">amt-coin</code> columns for each coin in denominations. So in the case of 24, the algorithm looks at columns (24-1), (24-6), and (24-10). For each of these three columns, the algorithm finds how many coins of the respective denomination need to be added to equal 24. The denomination with the lowest number of coins is chosen and the coin amounts are written to the matrix. My algorithm follows the dynamic programming methodology because it breaks the problem into overlapping sub-problems.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">denominations</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="c"># Counts is a matrix that stores the counts of each coin for each value in the range (0, amount)</span>
+<span class="c"># Counts = [amount][number of denominations]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">denominations</span><span class="p">))</span> <span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">amt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c"># Set the minimum coin count to infinity for this amount</span>
+    <span class="n">min_sum</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'inf'</span><span class="p">)</span>
+    <span class="c"># For each coin, look at the optimal coin counts for amt-coin.</span>
+    <span class="c"># Then check if using that coin to make up the difference from amt to (amt - coin) leads to using the fewest coins.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">denominations</span><span class="p">)):</span>
+        <span class="n">coin</span> <span class="o">=</span> <span class="n">denominations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">denominations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">amt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">amt</span><span class="o">-</span><span class="p">(</span><span class="n">amt</span><span class="o">-</span><span class="n">coin</span><span class="p">)))</span> <span class="ow">in</span> <span class="n">denominations</span><span class="p">:</span>
+                <span class="nb">sum</span><span class="o">=</span><span class="mi">0</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">denominations</span><span class="p">)):</span>
+                    <span class="nb">sum</span><span class="o">=</span><span class="p">(</span><span class="nb">sum</span><span class="o">+</span><span class="n">counts</span><span class="p">[</span><span class="n">amt</span><span class="o">-</span><span class="n">coin</span><span class="p">][</span><span class="n">n</span><span class="p">])</span>
+                <span class="nb">sum</span><span class="o">=</span><span class="nb">sum</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">if</span> <span class="nb">sum</span><span class="o">&lt;</span><span class="n">min_sum</span><span class="p">:</span>
+                    <span class="n">min_sum</span><span class="o">=</span><span class="nb">sum</span>
+                    <span class="n">optimal_coin</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">amt</span><span class="o">-</span><span class="n">denominations</span><span class="p">[</span><span class="n">optimal_coin</span><span class="p">]])</span>
+    <span class="n">temp</span><span class="p">[</span><span class="n">optimal_coin</span><span class="p">]</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="n">optimal_coin</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">counts</span><span class="p">[</span><span class="n">amt</span><span class="p">]</span><span class="o">=</span><span class="n">temp</span>
+
+<span class="k">print</span> <span class="n">counts</span>
+
+<span class="k">print</span> <span class="s">"The optimal change for "</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="s">"is "</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">denominations</span><span class="p">)):</span>
+    <span class="k">print</span> <span class="n">counts</span><span class="p">[</span><span class="n">amount</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="s">" of coin "</span><span class="p">,</span> <span class="n">denominations</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="k">print</span> <span class="s">"Total coins = "</span><span class="p">,</span> <span class="n">min_sum</span>
+</code></pre>
+</div>
+
+<p>The output of this algorithm with amount = 24 and denominations = [1,6,10] is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[[0, 0, 0], [1, 0, 0], [2, 0, 0], [3, 0, 0], [4, 0, 0], [5, 0, 0],
+[0, 1, 0], [1, 1, 0], [2, 1, 0], [3, 1, 0], [0, 0, 1], [1, 0, 1],
+[0, 2, 0], [1, 2, 0], [2, 2, 0], [3, 2, 0], [0, 1, 1], [1, 1, 1],
+[0, 3, 0], [1, 3, 0], [0, 0, 2], [1, 0, 2], [0, 2, 1], [1, 2, 1],
+[0, 4, 0]]
+
+The optimal change for 24 is
+0  of coin  1
+4  of coin  6
+0  of coin  10
+Total coins =  4
+</code></pre>
+</div>
+
+<p>Here’s a sketch I did when devising this solution. Amount = 12 and denominations = [1,6,10]:
+<img src="/img/1.jpg" alt="whiteboard" /></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Michael Remington</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Michael Remington</li>
+          <li><a href="mailto:"></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I'm a recent computer science graduate seeking a workplace that will benefit from my contributions.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
