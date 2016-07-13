@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Photography Portfolio Site"
-date:   2016-06-26 17:01:49 -0700
+date:   2016-07-13 11:01:49 -0700
 categories: machine learning TensorFlow neural networks MLB baseball
 ---
 
