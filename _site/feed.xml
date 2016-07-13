@@ -6,14 +6,14 @@
 </description>
     <link>http://remingm.github.io/</link>
     <atom:link href="http://remingm.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jul 2016 11:56:25 -0700</pubDate>
-    <lastBuildDate>Wed, 13 Jul 2016 11:56:25 -0700</lastBuildDate>
+    <pubDate>Wed, 13 Jul 2016 11:58:38 -0700</pubDate>
+    <lastBuildDate>Wed, 13 Jul 2016 11:58:38 -0700</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>DNA Promoter Analysis with Machine Learning</title>
         <description>&lt;h1 id=&quot;introduction-background-motivation&quot;&gt;Introduction/ Background/ Motivation&lt;/h1&gt;
-&lt;p&gt;Promoters are regions in DNA sequences that are recognition sites for RNA-polymerase to start transcription. These promoter sequences are fairly conserved throughout each domain of life so they allow for gene identification even when most gene sequences are so different. Gene identification is important when trying to identify DNA sequences of proteins (that perform most of the biochemical processes in the body). The goal of project two is to be able to input E. coli DNA sequences into a program and have it identify and analyze the promoter regions.&lt;/p&gt;
+&lt;p&gt;Promoters are regions in DNA sequences that are recognition sites for RNA-polymerase to start transcription. These promoter sequences are fairly conserved throughout each domain of life so they allow for gene identification even when most gene sequences are different. Gene identification is important when trying to identify DNA sequences of proteins (that perform most of the biochemical processes in the body). The goal of this project is to be able to input E. coli DNA sequences into a program and have it identify and analyze the promoter regions.&lt;/p&gt;
 
 &lt;h1 id=&quot;data&quot;&gt;Data&lt;/h1&gt;
 &lt;p&gt;I used a dataset of 106 sequences of 58 nucleotides. Half of the sequences were E. Coli promoter gene sequences, and the other half were non-promoter gene sequences from E. Coli. The data was randomly shuffled and split into train and test sets of fractions 70% and 30%.&lt;/p&gt;

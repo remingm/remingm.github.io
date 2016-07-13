@@ -5,7 +5,7 @@ date:   2016-07-13 11:05:49 -0700
 categories: machine learning TensorFlow neural networks bioinformatics
 ---
 # Introduction/ Background/ Motivation
-Promoters are regions in DNA sequences that are recognition sites for RNA-polymerase to start transcription. These promoter sequences are fairly conserved throughout each domain of life so they allow for gene identification even when most gene sequences are so different. Gene identification is important when trying to identify DNA sequences of proteins (that perform most of the biochemical processes in the body). The goal of project two is to be able to input E. coli DNA sequences into a program and have it identify and analyze the promoter regions.
+Promoters are regions in DNA sequences that are recognition sites for RNA-polymerase to start transcription. These promoter sequences are fairly conserved throughout each domain of life so they allow for gene identification even when most gene sequences are different. Gene identification is important when trying to identify DNA sequences of proteins (that perform most of the biochemical processes in the body). The goal of this project is to be able to input E. coli DNA sequences into a program and have it identify and analyze the promoter regions.
 
 # Data
 I used a dataset of 106 sequences of 58 nucleotides. Half of the sequences were E. Coli promoter gene sequences, and the other half were non-promoter gene sequences from E. Coli. The data was randomly shuffled and split into train and test sets of fractions 70% and 30%.
