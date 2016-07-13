@@ -22,10 +22,10 @@ Predicted promoter probability was plotted with nucleotide fractions for each se
 
 Bacterial promoters have common patterns that are roughly intact in most promoter sequences. The sequence TATAAT is common at the -10 position, where 0 is the start of the gene (Harley 1987). The sequence TTGACA is common at the -35 position (Harley 1987). Additionally, the sequence AAAAAARNR is sometimes present at the -42 position and the sequence AWWWWWTTTTT is sometimes in the -52 position (Harley 1987). (W = A or T, R = A or G, N = any base.)
 Sequences ranked with high probability of being promoters contained one or more of these common patterns. These patterns are highlighted in the table below. Additional trends were observed. Promoters were more likely to have three adenines or guanines in a row than non-promoters.
-![nucleotideFrequencies](/img/promoters.png)
+![nucleotideFrequencies](/img/promoters.jpeg)
 
 # Conclusion
-The neural network model was able to identify characteristics of E. Coli promoter sequences and identify them with high accuracy. 
+The neural network model was able to identify characteristics of E. Coli promoter sequences and identify them with high accuracy.
 
 # References
 Harley, Calvin B., and Robert P. Reynolds. (1987) Analysis of E. coli Promoter sequences. Nucleic acids research. 15(5): 2343-2361.
