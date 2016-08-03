@@ -164,6 +164,16 @@
     <script src="masonry.pkgd.min.js"></script>
     <script src="js/imagesloaded.pkgd.js"></script>
 
+	<script>
+		$(function() {
+		  var $container = $('.js-masonry');
+		  // initialize Masonry after all images have loaded
+		  $container.imagesLoaded( function() {
+		      $container.masonry();
+		  });
+		});
+	</script>
+
 </body>
 
 </html>
