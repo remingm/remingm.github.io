@@ -2,7 +2,7 @@
 layout: post
 title:  "Photography Portfolio Site"
 date:   2016-07-13 11:01:49 -0700
-categories: machine learning TensorFlow neural networks MLB baseball
+categories: bootstrap, html, css
 ---
 
 I built a website using bootstrap, html, css, and javascript to showcase some of my photography.
