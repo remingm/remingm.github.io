@@ -20,4 +20,6 @@ Feel free to contact me.
 
 [LinkedIn](https://www.linkedin.com/in/remingtonmichael)
 
+[Upwork](http://www.upwork.com/o/profiles/users/_~019e170971cd9931a5/)
+
 # View some of my work and projects below:
