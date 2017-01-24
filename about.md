@@ -3,7 +3,7 @@ layout: page
 title:
 permalink: /about/
 ---
-# I'm a software developer specializing in machine learning.
+<!-- # I'm a software developer specializing in machine learning. -->
 
 I'm currently on contract with [Chiral Software](https://chiralsoftware.com/), though I will be available for full-time work in 2017.
 
