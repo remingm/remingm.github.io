@@ -1,6 +1,6 @@
 ---
 layout: page
-title:
+title: "    "
 permalink: /about/
 ---
 # I'm a software developer specializing in machine learning.
