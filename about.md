@@ -5,7 +5,7 @@ permalink: /about/
 ---
 # I'm a software developer specializing in machine learning.
 
-I'm currently on contract with [Chiral Software](https://chiralsoftware.com/), though I will be available for full-time work in 2017.
+<!-- I'm currently on contract with [Chiral Software](https://chiralsoftware.com/), though I will be available for full-time work in 2017. -->
 
 <!-- I currently do contract work as a machine learning and software developer, building custom solutions that are tailored to my client's data and needs.  -->
 
