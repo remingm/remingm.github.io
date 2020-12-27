@@ -5,10 +5,7 @@ permalink: /about/
 ---
 # I'm a software developer specializing in machine learning.
 
-
-In my machine learning research lab I played a core role in building an effective system for data organization, processing, modeling, prediction, and visualization. My machine learning experience includes text classification, image recognition, sports prediction, genetic analysis, and economic forecasting among other projects.
-
-Additionally, I am used to rapidly learning and implementing new technologies and frameworks. I have a solid algorithms and programming background as well as experience with web development.
+At my current role I am responsible for the novel deep learning technology that powers our products. I am a lead author on four published patents that relate to deep learning for visual anomaly detection. I also design and implement custom machine learning solutions for clients that have included DARPA and Fortune 100 companies.
 
 Feel free to contact me.
 
