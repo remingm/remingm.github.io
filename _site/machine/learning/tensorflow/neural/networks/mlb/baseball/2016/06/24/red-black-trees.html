@@ -50,6 +50,8 @@
         
           
         
+          
+        
       </div>
     </nav>
 
@@ -64,7 +66,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Efficient Red-Black Tree Augmentation</h1>
-    <p class="post-meta"><time datetime="2016-06-24T18:01:49-07:00" itemprop="datePublished">Jun 24, 2016</time></p>
+    <p class="post-meta"><time datetime="2016-06-24T20:01:49-05:00" itemprop="datePublished">Jun 24, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -76,15 +78,15 @@ Show how to augment a red-black tree to support this operation efficiently while
 <p>Each node in the red-black tree will be augmented with four fields:</p>
 
 <ol>
-  <li>The minimum of either <code class="highlighter-rouge">node.value - node.left.max</code> (maximum value in left sub-tree) or <code class="highlighter-rouge">node.value - node.right.min</code> (minimum value in right sub-tree). This is the minimum difference of the current node with any node in its sub-tree.</li>
-  <li>Maximum value in sub-tree (<code class="highlighter-rouge">node.right.max</code>). If no right child, put the value of the current node.</li>
-  <li>Minimum value in sub-tree (<code class="highlighter-rouge">node.left.min</code>). If no left child, put the value of the current node.</li>
-  <li>Minimum difference in sub-tree. This differs from the first field in that this is the minimum difference between any two nodes in the sub-tree, not just the current node. This is the minimum of the following three fields: <code class="highlighter-rouge">node.left.field4, node.right.field4, node.field1</code>.</li>
+  <li>The minimum of either <code class="language-plaintext highlighter-rouge">node.value - node.left.max</code> (maximum value in left sub-tree) or <code class="language-plaintext highlighter-rouge">node.value - node.right.min</code> (minimum value in right sub-tree). This is the minimum difference of the current node with any node in its sub-tree.</li>
+  <li>Maximum value in sub-tree (<code class="language-plaintext highlighter-rouge">node.right.max</code>). If no right child, put the value of the current node.</li>
+  <li>Minimum value in sub-tree (<code class="language-plaintext highlighter-rouge">node.left.min</code>). If no left child, put the value of the current node.</li>
+  <li>Minimum difference in sub-tree. This differs from the first field in that this is the minimum difference between any two nodes in the sub-tree, not just the current node. This is the minimum of the following three fields: <code class="language-plaintext highlighter-rouge">node.left.field4, node.right.field4, node.field1</code>.</li>
 </ol>
 
 <p><em>O(lg n)</em> running time for Insert, Search and Delete is maintained because theorem 14.1 (1) from <em>Introduction to Algorithms</em> by Cormen, is valid for a red-black tree augmented with the above fields. This is because all of the augmented fields of a node can be determined from examining only the augmented fields of the immediate left child and/or right child. It is only necessary to look at the largest value in the left sub-tree and the smallest value in the right sub-tree when determining minimum difference with the parent node, as these values will be the closest in value to the parent node. After any insert, search, or delete operations, the root node will be augmented with the minimum di↵erence in the tree in field 4.</p>
 
-<p>Finding the values of the two numbers that created the MinDiff can be done in <em>O(lgn)</em> time: Starting at the root, if <code class="highlighter-rouge">node.field4 = node.left.field4</code>, go left, otherwise go right. Repeat until <code class="highlighter-rouge">node.field1 = root.field4</code>. At this point, the current node is one of the values of the minimum difference, and the other is either <code class="highlighter-rouge">node.right.field2</code> or <code class="highlighter-rouge">node.left.field3</code>.</p>
+<p>Finding the values of the two numbers that created the MinDiff can be done in <em>O(lgn)</em> time: Starting at the root, if <code class="language-plaintext highlighter-rouge">node.field4 = node.left.field4</code>, go left, otherwise go right. Repeat until <code class="language-plaintext highlighter-rouge">node.field1 = root.field4</code>. At this point, the current node is one of the values of the minimum difference, and the other is either <code class="language-plaintext highlighter-rouge">node.right.field2</code> or <code class="language-plaintext highlighter-rouge">node.left.field3</code>.</p>
 
 <hr />
 <p>1.</p>

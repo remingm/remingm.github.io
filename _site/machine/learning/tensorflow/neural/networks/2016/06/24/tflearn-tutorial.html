@@ -50,6 +50,8 @@
         
           
         
+          
+        
       </div>
     </nav>
 
@@ -64,7 +66,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">TensorFlow Learn Tutorial - Google's Simple Machine Learning Framework</h1>
-    <p class="post-meta"><time datetime="2016-06-24T19:58:49-07:00" itemprop="datePublished">Jun 24, 2016</time></p>
+    <p class="post-meta"><time datetime="2016-06-24T21:58:49-05:00" itemprop="datePublished">Jun 24, 2016</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -98,92 +100,84 @@ In this tutorial, all code should be written to one file.</p>
 <h1 id="tensorflow-08-installation">TensorFlow 0.8 Installation:</h1>
 <p>Install pip (or pip3 for python3) if it is not already installed:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit</span>
-<span class="gp">$ </span>sudo apt-get install python-pip python-dev
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>python-pip python-dev
 
 <span class="c"># Mac OS X</span>
-<span class="gp">$ </span>sudo easy_install pip
-</code></pre>
-</div>
+<span class="nv">$ </span><span class="nb">sudo </span>easy_install pip
+</code></pre></div></div>
 
 <p>Install TensorFlow:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 2.7:</span>
-<span class="gp">$ </span>sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 2.7:</span>
+<span class="nv">$ </span><span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
 
 <span class="c"># Ubuntu/Linux 64-bit, GPU enabled, Python 2.7. Requires CUDA toolkit 7.5 and cuDNN v4.</span>
 <span class="c"># For other versions, see "Install from sources" below.</span>
-<span class="gp">$ </span>sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
+<span class="nv">$ </span><span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
 
 <span class="c"># Mac OS X, CPU only:</span>
-<span class="gp">$ </span>sudo easy_install --upgrade six
-<span class="gp">$ </span>sudo pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py2-none-any.whl
-</code></pre>
-</div>
+<span class="nv">$ </span><span class="nb">sudo </span>easy_install <span class="nt">--upgrade</span> six
+<span class="nv">$ </span><span class="nb">sudo </span>pip <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py2-none-any.whl
+</code></pre></div></div>
 
 <p>For python3:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 3.4:</span>
-<span class="gp">$ </span>sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp34-cp34m-linux_x86_64.whl
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ubuntu/Linux 64-bit, CPU only, Python 3.4:</span>
+<span class="nv">$ </span><span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp34-cp34m-linux_x86_64.whl
 
 <span class="c"># Ubuntu/Linux 64-bit, GPU enabled, Python 3.4. Requires CUDA toolkit 7.5 and cuDNN v4.</span>
 <span class="c"># For other versions, see "Install from sources" below.</span>
-<span class="gp">$ </span>sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp34-cp34m-linux_x86_64.whl
+<span class="nv">$ </span><span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp34-cp34m-linux_x86_64.whl
 
 <span class="c"># Mac OS X, CPU only:</span>
-<span class="gp">$ </span>sudo easy_install --upgrade six
-<span class="gp">$ </span>sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py3-none-any.whl
-</code></pre>
-</div>
+<span class="nv">$ </span><span class="nb">sudo </span>easy_install <span class="nt">--upgrade</span> six
+<span class="nv">$ </span><span class="nb">sudo </span>pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py3-none-any.whl
+</code></pre></div></div>
 
 <h2 id="part-1--load-data">Part 1 : Load Data</h2>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># This tutorial will use TensorFlow, TF Learn, sklearn, and pandas</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This tutorial will use TensorFlow, TF Learn, sklearn, and pandas
+</span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">tensorflow.contrib.skflow</span> <span class="kn">as</span> <span class="nn">learn</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow.contrib.skflow</span> <span class="k">as</span> <span class="n">learn</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>First we’ll load our raw data and labels into pandas dataframes</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'iris.data'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'iris.labels'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'iris.data'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'iris.labels'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 
-<span class="c"># Ignore this. For later one-hot example.</span>
-<span class="n">text_labels</span> <span class="o">=</span> <span class="n">labels</span>
-</code></pre>
-</div>
+<span class="c1"># Ignore this. For later one-hot example.
+</span><span class="n">text_labels</span> <span class="o">=</span> <span class="n">labels</span>
+</code></pre></div></div>
 
 <p>Let’s take a look at our data shapes</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">(</span>150, 4<span class="o">)</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>150, 4<span class="o">)</span>
 <span class="o">(</span>150, 1<span class="o">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And our raw data</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div></div>
 
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>0    1    2    3   
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    1    2    3   
 0  5.1  3.5  1.4  0.2
 1  4.9  3.0  1.4  0.2
 2  4.7  3.2  1.3  0.2
@@ -195,16 +189,14 @@ In this tutorial, all code should be written to one file.</p>
 2  Iris-setosa
 3  Iris-setosa
 4  Iris-setosa
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can see that each input contains four flower measurements, and each output (label) is a class of the iris plant.</p>
 
 <p>Our model needs to know the number of classes we’re predicting</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">y_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">unique</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
 
 <h2 id="part-2--categorical-data-processing">Part 2 : Categorical Data Processing</h2>
 
@@ -212,50 +204,44 @@ In this tutorial, all code should be written to one file.</p>
 
 <p>Our labels are in text format and must be converted to integer values</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">categorical_processor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">CategoricalProcessor</span><span class="p">()</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">categorical_processor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">categorical_processor</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">CategoricalProcessor</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">categorical_processor</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">labels</span><span class="p">.</span><span class="n">values</span><span class="p">))</span>
+</code></pre></div></div>
 
 <p>Let’s look at our new labels. Each category is now a number</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div></div>
 
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>0   
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0   
 0  1
 1  1
 2  1
 3  1
 4  1
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="representing-categories-with-one-hot-vectors">Representing categories with “one-hot” vectors</h1>
 
 <p>Another way to handle categorical text or numbers is converting to categorical one-hot vectors</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">labels_oneHot</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">text_labels</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">labels_oneHot</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">text_labels</span><span class="p">)</span>
+</code></pre></div></div>
 <p>Let’s look at our new one-hot labels. Each column now represents a category. A “one-hot” vector is a vector of zeros with a one in a different position for each category.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">labels_oneHot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">labels_oneHot</span><span class="p">.</span><span class="n">head</span><span class="p">())</span>
+</code></pre></div></div>
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>0_Iris-setosa  0_Iris-versicolor  0_Iris-virginica
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0_Iris-setosa  0_Iris-versicolor  0_Iris-virginica
 0            1.0                0.0               0.0
 1            1.0                0.0               0.0
 2            1.0                0.0               0.0
 3            1.0                0.0               0.0
 4            1.0                0.0               0.0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We won’t use our one-hot labels for this experiment, but this is a common machine learning task</p>
 
@@ -266,94 +252,82 @@ Note: Don’t scale categorical integers.</p>
 
 <p>Let’s look at our unscaled data. You’ll see that the mean and standard deviation are not 0 and 1 for any columns.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div></div>
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>0           1           2           3   
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0           1           2           3   
 count  150.000000  150.000000  150.000000  150.000000
 mean     5.843333    3.054000    3.758667    1.198667
 std      0.828066    0.433594    1.764420    0.763161
 min      4.300000    2.000000    1.000000    0.100000
-<span class="gp">25%      </span>5.100000    2.800000    1.600000    0.300000
-<span class="gp">50%      </span>5.800000    3.000000    4.350000    1.300000
-<span class="gp">75%      </span>6.400000    3.300000    5.100000    1.800000
+25%      5.100000    2.800000    1.600000    0.300000
+50%      5.800000    3.000000    4.350000    1.300000
+75%      6.400000    3.300000    5.100000    1.800000
 max      7.900000    4.400000    6.900000    2.500000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>First we’ll create a scaler</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span><span class="p">()</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="p">.</span><span class="n">StandardScaler</span><span class="p">()</span>
+</code></pre></div></div>
 <p>Now we’ll scale (normalize) our data.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Let’s look at our scaled data. Now the mean and standard deviation are (roughly) 0 and 1 for each column.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div></div>
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>0             1             2             3   
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0             1             2             3   
 count  1.500000e+02  1.500000e+02  1.500000e+02  1.500000e+02
-mean  -4.736952e-16 -6.631732e-16  3.315866e-16 -2.842171e-16
+mean  <span class="nt">-4</span>.736952e-16 <span class="nt">-6</span>.631732e-16  3.315866e-16 <span class="nt">-2</span>.842171e-16
 std    1.003350e+00  1.003350e+00  1.003350e+00  1.003350e+00
-min   -1.870024e+00 -2.438987e+00 -1.568735e+00 -1.444450e+00
-<span class="gp">25%   </span>-9.006812e-01 -5.877635e-01 -1.227541e+00 -1.181504e+00
-<span class="gp">50%   </span>-5.250608e-02 -1.249576e-01  3.362659e-01  1.332259e-01
-<span class="gp">75%    </span>6.745011e-01  5.692513e-01  7.627586e-01  7.905908e-01
+min   <span class="nt">-1</span>.870024e+00 <span class="nt">-2</span>.438987e+00 <span class="nt">-1</span>.568735e+00 <span class="nt">-1</span>.444450e+00
+25%   <span class="nt">-9</span>.006812e-01 <span class="nt">-5</span>.877635e-01 <span class="nt">-1</span>.227541e+00 <span class="nt">-1</span>.181504e+00
+50%   <span class="nt">-5</span>.250608e-02 <span class="nt">-1</span>.249576e-01  3.362659e-01  1.332259e-01
+75%    6.745011e-01  5.692513e-01  7.627586e-01  7.905908e-01
 max    2.492019e+00  3.114684e+00  1.786341e+00  1.710902e+00
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now we’ll split our data into randomly shuffled train, and dev sets.
 Setting a random seed allows for continuity between runs</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_dev</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_dev</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_dev</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_dev</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h2 id="part-4--simple-deep-neural-network">Part 4 : Simple Deep Neural Network</h2>
 <p>Now we’ll create a simple deep neural network Tensorflow graph.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">TensorFlowDNNClassifier</span><span class="p">(</span><span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">TensorFlowDNNClassifier</span><span class="p">(</span><span class="n">hidden_units</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
 							<span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s">"Adam"</span><span class="p">,</span>
 							<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Here we’ll train our DNN</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="s">'dnnLogs'</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classifier</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="s">'dnnLogs'</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Step #100, epoch #25, avg. train loss: 1.23663
-</code></pre>
-</div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step #100, epoch #25, avg. train loss: 1.23663
+</code></pre></div></div>
 
 <p>and evaluate it on our dev data</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_dev</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dev</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: </span><span class="si">%</span><span class="s">f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_dev</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dev</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: %f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
+</code></pre></div></div>
 <p>Output:</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Accuracy: 0.966667
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy: 0.966667
+</code></pre></div></div>
 
 <p>Our deep neural network predicted correctly on about 96% of the development set!</p>
 
@@ -361,14 +335,13 @@ Setting a random seed allows for continuity between runs</p>
 <p>Running classifier.fit created the directory ‘dnnLogs’.
 Comment out the following line in part 3 above:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div>
 <p>Run the DNN again. It will run without scaled features.</p>
 
-<p>Run the following command in a shell from the working directory: <code class="highlighter-rouge">tensorboard --logdir dnnLogs</code></p>
+<p>Run the following command in a shell from the working directory: <code class="language-plaintext highlighter-rouge">tensorboard --logdir dnnLogs</code></p>
 
-<p>Then go to <code class="highlighter-rouge">localhost:6006</code> in your browser.
+<p>Then go to <code class="language-plaintext highlighter-rouge">localhost:6006</code> in your browser.
 Click “Histograms”, and then click ‘X’.
 You’ll see two graphs of X. Notice that one is centered around zero and the other isn’t. This is what scaling does.</p>
 
@@ -380,57 +353,53 @@ You’ll see two graphs of X. Notice that one is centered around zero and the ot
 
 <p>Next, we’ll define a custom classifier model. You can use any TensorFlow or TF Learn code in this function.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">custom_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">custom_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 
-    <span class="c"># When running, X is a tensor of [batch size, num feats] and y is a tensor of [batch size, num outputs]</span>
+    <span class="c1"># When running, X is a tensor of [batch size, num feats] and y is a tensor of [batch size, num outputs]
+</span>
+    <span class="c1"># This model will use a technique called batch normalization
+</span>    <span class="n">X</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">ops</span><span class="p">.</span><span class="n">batch_normalize</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">scale_after_normalization</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-    <span class="c"># This model will use a technique called batch normalization</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">batch_normalize</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">scale_after_normalization</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c1"># Now we'll pass our normalized batch to a DNN
+</span>    <span class="c1"># We can pass a TensorFlow object as the activation function
+</span>    <span class="n">layers</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">ops</span><span class="p">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">X</span><span class="p">,[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">,</span><span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-    <span class="c"># Now we'll pass our normalized batch to a DNN</span>
-    <span class="c"># We can pass a TensorFlow object as the activation function</span>
-    <span class="n">layers</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">X</span><span class="p">,[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span><span class="n">dropout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-    <span class="c"># Given encoding of DNN, take encoding of last step (e.g hidden state of the</span>
-    <span class="c"># neural network at the last step) and pass it as features for logistic</span>
-    <span class="c"># regression over the label classes.</span>
-    <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</code></pre>
-</div>
+    <span class="c1"># Given encoding of DNN, take encoding of last step (e.g hidden state of the
+</span>    <span class="c1"># neural network at the last step) and pass it as features for logistic
+</span>    <span class="c1"># regression over the label classes.
+</span>    <span class="k">return</span> <span class="n">learn</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>We need a generic TF Learn model to wrap our custom model.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">custom_model</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">custom_model</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
 						   <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
                                        <span class="n">optimizer</span><span class="o">=</span><span class="s">"Adam"</span><span class="p">,</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We’ll make a function for training and evaluating</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span><span class="n">logdir</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">monitor</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="c"># Train</span>
-    <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">logdir</span><span class="p">,</span><span class="n">monitor</span><span class="o">=</span><span class="n">monitor</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span><span class="n">logdir</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">monitor</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="c1"># Train
+</span>    <span class="n">classifier</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">logdir</span><span class="o">=</span><span class="n">logdir</span><span class="p">,</span><span class="n">monitor</span><span class="o">=</span><span class="n">monitor</span><span class="p">)</span>
 
-    <span class="c"># Evaluate on dev data</span>
-    <span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_dev</span><span class="p">)</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dev</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+    <span class="c1"># Evaluate on dev data
+</span>    <span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_dev</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="p">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_dev</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">score</span>
 
 <span class="n">score</span> <span class="o">=</span> <span class="n">run_model</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span><span class="s">'customModelLogs'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: </span><span class="si">%</span><span class="s">f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
-</code></pre>
-</div>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: %f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
+</code></pre></div></div>
 <p>Output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Step #100, epoch #25, avg. train loss: 0.72944
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Step #100, epoch #25, avg. train loss: 0.72944
 Step #200, epoch #50, avg. train loss: 0.48746
 Step #300, epoch #75, avg. train loss: 0.41292
 Step #400, epoch #100, avg. train loss: 0.38321
 Step #500, epoch #125, avg. train loss: 0.33969
 Accuracy: 1.000000
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We got 100% accuracy, but keep in mind our dataset has only 150 datapoints.</p>
 
@@ -440,29 +409,29 @@ It’s recommended in ‘Bengio. Practical Recommendations for Gradient-Based Tr
 
 <p>We’ll make a function that will randomly generate hyper parameters or return set ones.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getHyperparameters</span><span class="p">(</span><span class="n">tune</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">getHyperparameters</span><span class="p">(</span><span class="n">tune</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
 
     <span class="k">if</span> <span class="n">tune</span><span class="p">:</span>
 
-        <span class="c"># Randomize DNN layers and hidden size</span>
-        <span class="n">hidden_units</span><span class="o">=</span><span class="p">[]</span>
-        <span class="n">NUNITS</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-        <span class="n">NLAYERS</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># Randomize DNN layers and hidden size
+</span>        <span class="n">hidden_units</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">NUNITS</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">NLAYERS</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">NLAYERS</span><span class="p">):</span>
-            <span class="n">hidden_units</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUNITS</span><span class="p">)</span>
+            <span class="n">hidden_units</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUNITS</span><span class="p">)</span>
 
-        <span class="c"># Make dict of randomized hyper params</span>
-        <span class="n">hyperparams</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">'BATCH_SIZE'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
-        <span class="s">'STEPS'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
-        <span class="s">'LEARNING_RATE'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">),</span>
-        <span class="s">'OPTIMIZER'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">"SGD"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adagrad"</span><span class="p">]),</span>
+        <span class="c1"># Make dict of randomized hyper params
+</span>        <span class="n">hyperparams</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'BATCH_SIZE'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+        <span class="s">'STEPS'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+        <span class="s">'LEARNING_RATE'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">),</span>
+        <span class="s">'OPTIMIZER'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="s">"SGD"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adagrad"</span><span class="p">]),</span>
         <span class="s">'HIDDEN_UNITS'</span><span class="p">:</span><span class="n">hidden_units</span><span class="p">,</span>
         <span class="s">'NUM_LAYERS'</span><span class="p">:</span><span class="n">NLAYERS</span><span class="p">,</span>
         <span class="s">'NUM_UNITS'</span><span class="p">:</span><span class="n">NUNITS</span><span class="p">,</span>
-        <span class="s">'ACTIVATION_FUNCTION'</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu6</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">elu</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softplus</span><span class="p">]),</span>
-        <span class="s">'KEEP_PROB'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-        <span class="s">'MAX_BAD_COUNT'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="s">'ACTIVATION_FUNCTION'</span><span class="p">:</span> <span class="n">random</span><span class="p">.</span><span class="n">choice</span><span class="p">([</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">tanh</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu6</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">elu</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">softplus</span><span class="p">]),</span>
+        <span class="s">'KEEP_PROB'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="s">'MAX_BAD_COUNT'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
         <span class="p">}</span>
 
     <span class="k">else</span><span class="p">:</span>
@@ -477,71 +446,68 @@ It’s recommended in ‘Bengio. Practical Recommendations for Gradient-Based Tr
         <span class="s">'HIDDEN_UNITS'</span><span class="p">:</span><span class="n">hidden_units</span><span class="p">,</span>
         <span class="s">'NUM_LAYERS'</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">hidden_units</span><span class="p">),</span>
         <span class="s">'NUM_UNITS'</span><span class="p">:</span><span class="n">hidden_units</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="s">'ACTIVATION_FUNCTION'</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
+        <span class="s">'ACTIVATION_FUNCTION'</span><span class="p">:</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">,</span>
         <span class="s">'KEEP_PROB'</span><span class="p">:</span><span class="mf">0.6</span><span class="p">,</span>
-        <span class="s">'MAX_BAD_COUNT'</span><span class="p">:</span><span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+        <span class="s">'MAX_BAD_COUNT'</span><span class="p">:</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
         <span class="p">}</span>
 
     <span class="k">return</span> <span class="n">hyperparams</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Next we’ll wrap our model in a function so that we can repeatedly instantiate it with new hyper-parameters.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">instantiateModel</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">instantiateModel</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">):</span>
 
-    <span class="c"># We'll copy the same model from above</span>
-    <span class="k">def</span> <span class="nf">custom_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">batch_normalize</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">scale_after_normalization</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c1"># We'll copy the same model from above
+</span>    <span class="k">def</span> <span class="nf">custom_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">ops</span><span class="p">.</span><span class="n">batch_normalize</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">scale_after_normalization</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-        <span class="n">layers</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">[</span><span class="s">'HIDDEN_UNITS'</span><span class="p">],</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">ops</span><span class="p">.</span><span class="n">dnn</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">hyperparams</span><span class="p">[</span><span class="s">'HIDDEN_UNITS'</span><span class="p">],</span>
 	  					<span class="n">activation</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'ACTIVATION_FUNCTION'</span><span class="p">],</span>
 						<span class="n">dropout</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'KEEP_PROB'</span><span class="p">])</span>
 
-        <span class="k">return</span> <span class="n">learn</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">learn</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-    <span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">custom_model</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
+    <span class="n">classifier</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">TensorFlowEstimator</span><span class="p">(</span><span class="n">model_fn</span><span class="o">=</span><span class="n">custom_model</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="n">y_classes</span><span class="p">,</span>
 						<span class="n">batch_size</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'BATCH_SIZE'</span><span class="p">],</span>
 						<span class="n">steps</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'STEPS'</span><span class="p">],</span><span class="n">optimizer</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'OPTIMIZER'</span><span class="p">],</span>
 						<span class="n">learning_rate</span><span class="o">=</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'LEARNING_RATE'</span><span class="p">])</span>
 
-    <span class="c"># We'll make a monitor so that we can implement early stopping based on our train accuracy. This will prevent overfitting.</span>
-    <span class="n">monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">monitors</span><span class="o">.</span><span class="n">BaseMonitor</span><span class="p">(</span><span class="n">early_stopping_rounds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'MAX_BAD_COUNT'</span><span class="p">]),</span><span class="n">print_steps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="c1"># We'll make a monitor so that we can implement early stopping based on our train accuracy. This will prevent overfitting.
+</span>    <span class="n">monitor</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">monitors</span><span class="p">.</span><span class="n">BaseMonitor</span><span class="p">(</span><span class="n">early_stopping_rounds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">[</span><span class="s">'MAX_BAD_COUNT'</span><span class="p">]),</span><span class="n">print_steps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">monitor</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now we’ll ‘tune’ our model by running a hyper parameter search over many runs</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="c"># Raise this number for a more thorough hyper-parameter search</span>
-
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> <span class="c1"># Raise this number for a more thorough hyper-parameter search
+</span>
     <span class="n">hyperparams</span> <span class="o">=</span> <span class="n">getHyperparameters</span><span class="p">(</span><span class="n">tune</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">)</span>
     <span class="n">classifier</span><span class="p">,</span><span class="n">monitor</span> <span class="o">=</span> <span class="n">instantiateModel</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">)</span>
 
     <span class="n">score</span> <span class="o">=</span> <span class="n">run_model</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span><span class="n">monitor</span><span class="o">=</span><span class="n">monitor</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: </span><span class="si">%</span><span class="s">f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: %f"</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
 
-    <span class="c"># We don't need to log this array</span>
-    <span class="k">del</span> <span class="n">hyperparams</span><span class="p">[</span><span class="s">'HIDDEN_UNITS'</span><span class="p">]</span>
+    <span class="c1"># We don't need to log this array
+</span>    <span class="k">del</span> <span class="n">hyperparams</span><span class="p">[</span><span class="s">'HIDDEN_UNITS'</span><span class="p">]</span>
 
-    <span class="c"># Now we'll add the dev set accuracy to our dict</span>
-    <span class="n">hyperparams</span><span class="p">[</span><span class="s">'dev_Accuracy'</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
+    <span class="c1"># Now we'll add the dev set accuracy to our dict
+</span>    <span class="n">hyperparams</span><span class="p">[</span><span class="s">'dev_Accuracy'</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
 
-    <span class="c"># Convert the dict to a dataframe</span>
-    <span class="n">log</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Convert the dict to a dataframe
+</span>    <span class="n">log</span> <span class="o">=</span> <span class="n">pandas</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hyperparams</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">print</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
 
-    <span class="c"># Write to a csv file</span>
-    <span class="n">csvName</span> <span class="o">=</span> <span class="s">'model_log.csv'</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">csvName</span><span class="p">)):</span>
-        <span class="c"># First run, write headers</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'model_log.csv'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">)</span>
+    <span class="c1"># Write to a csv file
+</span>    <span class="n">csvName</span> <span class="o">=</span> <span class="s">'model_log.csv'</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">csvName</span><span class="p">)):</span>
+        <span class="c1"># First run, write headers
+</span>        <span class="n">log</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'model_log.csv'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'model_log.csv'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre>
-</div>
+        <span class="n">log</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'model_log.csv'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Open the csv file in libreoffice or a similar editor. Now you can sort thousands of runs by dev accuracy and find the best hyperparameters.</p>
 
