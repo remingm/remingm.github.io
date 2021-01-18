@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Interactive Covid-19 Forecast and Correlation Explorer"
+date:   2021-01-16 11:01:49 -0700
+categories: 
+---
+
+This project is an interactive forecasting model for Covid-19 metrics. More explanation is provided on the site.
+
+[View the webapp here.](https://share.streamlit.io/remingm/covid19-correlations-forecast/main.py)
+
+[Alternative link](https://covidcors.herokuapp.com/)
+
+![forecast.png](/img/forecast.png)
+
+![cors.png](/img/cors.png)
