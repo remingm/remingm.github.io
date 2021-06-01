@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Using Machine Learning to Group US States by Covid-19 Hospitalization Trends</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="../assets/main/css/main.css%3Fv=f58f429499.css" />
+    <noscript><link rel="stylesheet" href="../assets/main/css/noscript.css%3Fv=f58f429499.css" /></noscript>
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Michael Remington" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Using Machine Learning to Group US States by Covid-19 Hospitalization Trends" />
+    <meta property="og:description" content="In this article I&#x27;ll use a clustering algorithm to group US states based on trends in Covid-19 hospitalizations and other metrics. These results may hint at patterns of interstate travel during the pandemic." />
+    <meta property="og:url" content="http://localhost:2368/using-machine-learning-to-compare-states-covid-trajectories/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/visualization-copy-1.svg" />
+    <meta property="article:published_time" content="2021-06-01T19:20:20.000Z" />
+    <meta property="article:modified_time" content="2021-06-01T19:39:01.000Z" />
+    <meta property="article:tag" content="Covid-19" />
+    <meta property="article:tag" content="Machine Learning" />
+    <meta property="article:tag" content="Projects" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Using Machine Learning to Group US States by Covid-19 Hospitalization Trends" />
+    <meta name="twitter:description" content="In this article I&#x27;ll use a clustering algorithm to group US states based on trends in Covid-19 hospitalizations and other metrics. These results may hint at patterns of interstate travel during the pandemic." />
+    <meta name="twitter:url" content="http://localhost:2368/using-machine-learning-to-compare-states-covid-trajectories/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/visualization-copy-1.svg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Michael Remington" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Covid-19, Machine Learning, Projects" />
+    <meta name="twitter:site" content="@mremingtn" />
+    <meta property="og:image:width" content="660" />
+    <meta property="og:image:height" content="300" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Michael Remington",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Michael Remington",
+        "url": "http://localhost:2368/author/michael/",
+        "sameAs": []
+    },
+    "headline": "Using Machine Learning to Group US States by Covid-19 Hospitalization Trends",
+    "url": "http://localhost:2368/using-machine-learning-to-compare-states-covid-trajectories/",
+    "datePublished": "2021-06-01T19:20:20.000Z",
+    "dateModified": "2021-06-01T19:39:01.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/visualization-copy-1.svg",
+        "width": 660,
+        "height": 300
+    },
+    "keywords": "Covid-19, Machine Learning, Projects",
+    "description": "In this article I&#x27;ll use a clustering algorithm to group US states based on trends in Covid-19 hospitalizations and other metrics. These results may hint at patterns of interstate travel during the pandemic.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.1" />
+    <link rel="alternate" type="application/rss+xml" title="Michael Remington" href="../rss/index.html" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.0.0/umd/portal.min.js" data-ghost="http://localhost:2368/"></script><style> .gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83996371-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83996371-1');
+</script><style>:root {--ghost-accent-color: #1b6b8d;}</style>
+
+    <style>#wrapper>.bg {background-image: url(../assets/images/overlay.png%3Fv=f58f429499),linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url("../content/images/2021/03/DSC_0529-crop.jpg") }</style>
+
+</head>
+<body class="is-preload post-template tag-covid-19 tag-machine-learning tag-projects">
+
+    <div id="wrapper" >
+
+
+        <header id="header">
+                <a href="../index.html" class="logo">Michael Remington</a>
+        </header>
+
+            <nav id="nav">
+    <ul class="links">
+        <li class="nav-home "><a href="../index.html">Home</a></li>
+        <li class="nav-about "><a href="../about/index.html">About</a></li>
+        <li class="nav-covid-19-data-analysis "><a href="../tag/covid-19/index.html">Covid-19 Data Analysis</a></li>
+        <li class="nav-photography "><a href="../photo/index.html">Photography</a></li>
+        <li class="nav-music "><a href="../music/index.html">Music</a></li>
+    </ul>
+    <ul class="icons">
+        <li><a href="https://twitter.com/mremingtn" class="icon fa-twitter" title="Twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="https://feedly.com/i/subscription/feed/http://localhost:2368/rss/" class="icon fa-rss" target="_blank" rel="noopener"><span class="label" title="RSS">RSS</span></a></li>
+    </ul>
+</nav>
+
+
+        
+
+<main id="main">
+
+    <section class="post">
+
+        <header class="major">
+            <span class="date">June 1, 2021</span>
+            <h1>Using Machine Learning to Group US States by Covid-19 Hospitalization Trends</h1>
+                <p class="content">In this article I&#x27;ll use a clustering algorithm to group US states based on trends in Covid-19 hospitalizations and other metrics. These results may hint at patterns of interstate travel during the pandemic.</p>
+        </header>
+
+        <div class="image main"><img src="../content/images/2021/05/visualization-copy-1.svg" alt="Using Machine Learning to Group US States by Covid-19 Hospitalization Trends" /></div>
+
+        <div class="content">
+            <h2 id="overview">Overview</h2><p>Machine learning algorithms can provide unique insights from Covid-19 data. In this article I'll use a clustering algorithm to group US states based on trends in Covid-19 hospitalizations and other metrics. Some groupings are surprising and invite further investigation. Why would a state have a different trend than its neighbors? Why would some distant states have similar trends? These results may hint at patterns of interstate travel during the pandemic.</p><p>First we'll explore the hospitalization trend groupings, then we'll add more metrics involving cases and deaths. Lastly, we'll dive into how the project works. </p><h2 id="data-preprocessing">Data Preprocessing</h2><p>All data was scaled from 0-1 to account for population differences. We are looking at similar hospitalization trends and timing, not similar numbers hospitalized. Without scaling the groups are predictable and uninteresting: states with similar populations are grouped.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/unscaled.svg" class="kg-image" alt loading="lazy" width="660" height="300"><figcaption>All states before scaling. States with higher populations have taller peaks. Note: values dip below 0 because they have been centered by Scikit-Learn's PCA implementation.</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/scaled.svg" class="kg-image" alt loading="lazy"><figcaption>After scaling, all state trends are equal height.</figcaption></figure><h2 id="results">Results</h2><p>The OPTICS clustering algorithm produced these groupings. The inputs were Covid-19 hospitalizations from March 2020 to March 2021 for each state.</p><h3 id="group-1">Group 1</h3><p>Hospitalizations in these states followed nearly identical trends and peaked within 15 days of each other. This group has 3 bordering states.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization-1.svg" class="kg-image" alt loading="lazy" width="660" height="300"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-2">Group 2</h3><p>The geographical outlier is Washington State. Despite this, the hospitalization trajectories show a similar plateau in hospitalizations around the same time.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization-copy.svg" class="kg-image" alt loading="lazy" width="660" height="300"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--1-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--1-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--1-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--1-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--1-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-3">Group 3</h3><p>Despite sharing borders with the last group, the clustering algorithm separates Delaware, Massachusetts, and New Hampshire. These states show a narrower and later peak in hospitalizations compared to their neighbors in group 2. Delaware is particularly interesting - it's completely surrounded by states from group 2 but does not share their hospitalization curve.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--2--2.svg" class="kg-image" alt loading="lazy" width="660" height="300"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--2-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--2-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--2-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--2-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--2-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-4">Group 4</h3><p>These hospitalization trends are similar but the states are distant. Their peaks occurred within ten days of each other and have similar shapes. There may be a non-obvious commonality that led to similar trends.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--3-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--3-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--3-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--3-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--3-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--3-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h2 id="additional-hospitalization-groups">Additional Hospitalization Groups</h2><p>Lowering the minimum states per group from 3 to 2 results in additional groups. Note that AZ, TX, LA, and MS experienced two large peaks in hospitalizations, while DC, NY, NC, and VA experienced just one large peak simultaneously.</p><p><strong>Two Peaks</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--7-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--6-.svg" class="kg-image" alt loading="lazy"></figure><p><strong>One Peak</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--5-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--4-.svg" class="kg-image" alt loading="lazy"></figure><h3 id="all-hospitalization-trend-groups">All Hospitalization Trend Groups</h3><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/Hospitalization_Trend_Groups.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/Hospitalization_Trend_Groups.png 600w, ../content/images/size/w1000/2021/05/Hospitalization_Trend_Groups.png 1000w, ../content/images/size/w1600/2021/05/Hospitalization_Trend_Groups.png 1600w, ../content/images/size/w2400/2021/05/Hospitalization_Trend_Groups.png 2400w" sizes="(min-width: 720px) 720px"></figure><h2 id="adding-cases-deaths-and-other-metrics">Adding Cases, Deaths, and Other Metrics</h2><p>Using my web interface, we'll now add four additional metrics to cluster states by. Precise definitions for these metrics are found in the methods section.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/Screen-Shot-2021-05-13-at-1.41.31-PM.png" class="kg-image" alt loading="lazy" width="1488" height="636" srcset="../content/images/size/w600/2021/05/Screen-Shot-2021-05-13-at-1.41.31-PM.png 600w, ../content/images/size/w1000/2021/05/Screen-Shot-2021-05-13-at-1.41.31-PM.png 1000w, ../content/images/2021/05/Screen-Shot-2021-05-13-at-1.41.31-PM.png 1488w" sizes="(min-width: 720px) 720px"></figure><p>The clustering algorithm returns new groups after taking into account the five metrics above.</p><p>The line charts now attempt to represent all five metrics in each line. This is done with dimensionality reduction (more details later).</p><h3 id="group-1-1">Group 1</h3><p>The absence of the Dakotas is notable.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--8-.svg" class="kg-image" alt loading="lazy" width="660" height="300"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--4-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--4-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--4-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--4-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--4-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-2-1">Group 2</h3><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--9-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--5-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--5-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--5-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--5-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--5-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-3-1">Group 3</h3><p>We again see Washington as a geographical outlier even though its chart shows similar trends in the five metrics.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--10-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--6-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--6-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--6-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--6-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--6-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-4-1">Group 4</h3><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--11-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--7-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--7-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--7-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--7-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--7-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="group-5">Group 5</h3><p>These southern states show similar trajectories in the five metrics. They have two major peaks while the previous groups had just one.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/visualization--12-.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/MapChart_Map--8-.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/MapChart_Map--8-.png 600w, ../content/images/size/w1000/2021/05/MapChart_Map--8-.png 1000w, ../content/images/size/w1600/2021/05/MapChart_Map--8-.png 1600w, ../content/images/size/w2400/2021/05/MapChart_Map--8-.png 2400w" sizes="(min-width: 720px) 720px"></figure><h3 id="all-trend-groups">All Trend Groups</h3><p>Additional groups 6 and 7 were created by lowering the minimum states per group from 3 to 2.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/Trend_Groups_For_5_Metrics_.png" class="kg-image" alt loading="lazy" width="2000" height="1424" srcset="../content/images/size/w600/2021/05/Trend_Groups_For_5_Metrics_.png 600w, ../content/images/size/w1000/2021/05/Trend_Groups_For_5_Metrics_.png 1000w, ../content/images/size/w1600/2021/05/Trend_Groups_For_5_Metrics_.png 1600w, ../content/images/size/w2400/2021/05/Trend_Groups_For_5_Metrics_.png 2400w" sizes="(min-width: 720px) 720px"></figure><h2 id="discussion">Discussion</h2><p>I'm a data scientist, not an infectious disease expert, but I'll speculate that interstate travel, population density, and related elements may be key factors for these groups.</p><p>For example, we can presume that there was more interstate travel between North and South Dakota than between South Dakota and any of group 1 (red in the above map). Other groups like group 3 (green) are less explainable due to geographical outliers. </p><h2 id="methods">Methods</h2><p>All data is from <a href="https://covidtracking.com/">covidtracking.com</a>. The data was scaled from 0-1 as explained earlier.</p><h3 id="data-definitions">Data Definitions:</h3><p><strong>hospitalizedCurrently:</strong> Number hospitalized for Covid-19 at any point in time. Not just new admissions.<br><strong>deathIncrease:</strong> New Covid-19 deaths per day. This is smoothed with a one-week average as is common in prominent publications such as the New York Times.<br><strong>inIcuCurrently:</strong> Number in an ICU for Covid-19 at any point in time. Not just new admissions.<br><strong>percentPostive:</strong> The fraction of tests that are positive. I believe this is a better comparison than cases per million because of varying case definitions and testing rates between states.<br><strong>Case Fatality Rate:</strong> Fraction of deaths out of known cases for each state. This is not the lethality of Covid-19, which is instead estimated by the infection fatality rate (IFR). </p><h3 id="reducing-dimensions">Reducing Dimensions</h3><p>If more than one metric is selected then dimensionality reduction is done with <a href="https://scikit-learn.org/stable/modules/decomposition.html#pca">PCA</a>. PCA projects the metrics into a lower-dimensional space while attempting to preserve the information that explains the most variance. A potential improvement would involve clustering in all five dimensions and reducing dimensions only for visualization. I implemented a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html?highlight=t%20sne#sklearn.manifold.TSNE">T-SNE</a> function for this purpose.</p><p>The <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html">OPTICS clustering algorithm</a> was used to generate clusters. The minimum number of datapoints per cluster was 3 unless otherwise stated.</p><h2 id="follow-me-for-more-articles-like-this">Follow me for more articles like this:</h2><p><a href="https://twitter.com/mremingtn">https://twitter.com/mremingtn</a></p><h2 id="source-code">Source code</h2><p><a href="https://github.com/remingm/covid19-clustering-states">github.com/remingm/covid19-clustering-states</a></p>
+        </div>
+
+
+        <footer class="post-footer">
+
+            <div class="authors">
+                <a class="author-box" href="../author/michael/index.html">
+                    <section class="author-box-content">
+                        <div class="author-box-label">Author</div>
+                        <h5 class="author-box-name">Michael Remington</h5>
+                        <p>Read more posts by this author.</p>
+                    </section>
+                </a>
+            </div>
+
+        </footer>
+
+    </section>
+
+</main>
+
+
+<script>
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
+
+
+        <div id="copyright">
+            <ul>
+                <li>&copy; Michael Remington</li>
+                <li>Design by <a href="https://html5up.net">HTML5 UP</a></li>
+                <li>Published with <a href="https://ghost.org">Ghost</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script src="../assets/main/js/jquery.min.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/jquery.scrollex.min.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/jquery.scrolly.min.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/browser.min.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/breakpoints.min.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/util.js%3Fv=f58f429499"></script>
+    <script src="../assets/main/js/main.js%3Fv=f58f429499"></script>
+
+    
+
+</body>
+</html>
